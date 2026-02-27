@@ -131,3 +131,31 @@ div{
     height: 50px;
     left: 200px;
 }
+
+/* O container que segura todas as colunas */
+.linha-item {
+    display: flex;          /* Ativa o modo flexível */
+    flex-direction: row;    /* Garante que fiquem em linha */
+    gap: 20px;              /* Cria um espaço entre as informações */
+    align-items: center;    /* Alinha os itens verticalmente ao centro */
+    flex-wrap: wrap;        /* Se a tela for pequena, elas pulam para a linha de baixo em vez de esmagar */
+    padding: 10px 0;
+}
+
+/* Cada grupo (Label + Valor) */
+.coluna {
+    display: flex;
+    flex-direction: column; /* Mantém o label em cima do valor */
+    min-width: 80px;        /* Garante um tamanho mínimo para não ficar grudado */
+}
+
+/* Estilo opcional para os labels ficarem menores e cinzas (estilo sistema profissional) */
+.coluna label {
+    font-size: 12px;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.teste {
+    font-weight: bold;
+}

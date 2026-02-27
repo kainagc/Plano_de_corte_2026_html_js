@@ -4,7 +4,6 @@ async function enviar_dados_cad() {
     let senha = document.getElementById("senhacadascamp").innerText;
     let comfirsenha = document.getElementById("comfsenhacadascamp").innerText;
 
-    // Corrigido: Agora o nome da variável bate com o que foi pego da div
     if (senha !== comfirsenha) {
 
 
