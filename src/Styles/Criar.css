@@ -1,0 +1,133 @@
+body{
+    background-color: #4E4E4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#princcriar{
+    margin-top: 140px;
+    display: flex;
+    width: 1450px;
+    height: 650px;
+    background-color: #666666;
+    
+    border-radius: 20px;
+    border: solid 3px;
+    border-color: white;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+#dados{
+    width: 380px;
+    height: 650px;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+#campcor{
+    width: 200px;
+    height: 30px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    gap: 10px;
+    color: black;
+}
+
+#campesp{
+    width: 200px;
+    height: 30px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: black;
+}
+
+#props{
+    width: 380px;
+    height: 365px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #4E4E4E;
+}
+h1{
+    margin: 4px;
+    margin-top: 2px;
+    font-size: 25px;
+}
+div{
+    margin: 1px;
+}
+
+#campcomp,#camplarg,#campquant,#campdesc{
+    width: 200px;
+    height: 40px;
+    
+    border-radius: 20px;
+    border-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: black;
+}
+
+#botinser{
+    width: 150px;
+    height: 40px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #666666;
+}
+
+#visor{
+    width: 600px;
+    height: 550px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: white;
+    background-color: #4E4E4E;
+}
+
+#voltarimg{
+    width: 50px;
+    height: 50px;
+    left: 200px;
+}

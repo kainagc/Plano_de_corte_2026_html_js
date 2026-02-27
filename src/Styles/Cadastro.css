@@ -1,0 +1,107 @@
+body{
+    background-color: #4E4E4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#princcadas{
+    margin-top: 140px;
+  display: flex;
+  width: 1450px;
+  height: 650px;
+  background-color: #666666;
+  flex-direction: column;
+  border-radius: 20px;
+  border: solid 3px;
+  border-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#camposcadas{
+    width: 300px;
+    height: 650px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#nomecasdascamp{
+    width: 250px;
+    height: 50px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+#emailcadascamp{
+    width: 250px;
+    height: 50px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+#senhacadascamp{
+    width: 250px;
+    height: 50px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+#comfsenhacadascamp{
+    width: 250px;
+    height: 50px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+#botcadast{
+    width: 185px;
+    height: 50px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-top: 20px;
+    color: #4E4E4E;
+}
+
+#nomecadas,#emailcadas,#senhacadas,#comfsenhacadas{
+    color: white;
+}
+
+#voltarimg{
+    width: 50px;
+    height: 50px;
+    left: 200px;
+}

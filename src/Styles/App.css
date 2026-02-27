@@ -1,0 +1,83 @@
+body {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4E4E4E;
+}
+
+#principal{
+  margin-top: 140px;
+  display: flex;
+  width: 1450px;
+  height: 650px;
+  background-color: #666666;
+  flex-direction: column;
+  border-radius: 20px;
+  border: solid 3px;
+  border-color: white;
+}
+
+#logo{
+  display: flex;
+  width: 300px;
+  height: 100px;
+  
+  margin-top: 10px;
+  margin-left: 10px;
+  justify-content: center;
+}
+
+#menu{
+  display: flex;
+  margin-top: 20px;
+  width: 90%;
+  height: 380px;
+  background-color: #666666;
+  margin-left: 60px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#bot1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: #4E4E4E;
+  border-radius: 20px;
+  border: solid 3px;
+  border-color: white;
+  color: white;
+}
+
+#bot2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: #4E4E4E;
+  border-radius: 20px;
+  border: solid 3px;
+  border-color: white;
+  color: white;
+}
+
+#bot3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: #4E4E4E;
+  border-radius: 20px;
+  border: solid 3px;
+  border-color: white;
+  color: white;
+}
+
+#bot1id{
+  text-decoration: none;
+}
