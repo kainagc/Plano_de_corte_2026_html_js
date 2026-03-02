@@ -3,12 +3,12 @@ let linhas = [];
 
 function inserir() {
     // Captura dos valores
-    let cor_mat = document.getElementById("campcor").innerText;
-    let esp_mat = document.getElementById("campesp").innerText;
-    let compri = document.getElementById("campcomp").innerText;
-    let larg = document.getElementById("camplarg").innerText;
-    let quant = document.getElementById("campquant").innerText;
-    let desc = document.getElementById("campdesc").innerText;
+    let cor_mat = document.getElementById("campcor").value;
+    let esp_mat = document.getElementById("campesp").value;
+    let compri = document.getElementById("campcomp").value;
+    let larg = document.getElementById("camplarg").value;
+    let quant = document.getElementById("campquant").value;
+    let desc = document.getElementById("campdesc").value;
 
     // Validação
     if (!compri || !larg || !quant || !esp_mat) {

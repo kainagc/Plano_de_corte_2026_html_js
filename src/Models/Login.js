@@ -1,6 +1,6 @@
 async function fazerLogin() {
-    let email = document.getElementById("emaillocamp").innerText;
-    let senha = document.getElementById("senhalocamp").innerText;
+    let email = document.getElementById("emaillocamp").value;
+    let senha = document.getElementById("senhalocamp").value;
 
     try {
         const resposta = await fetch('/api/login', {
