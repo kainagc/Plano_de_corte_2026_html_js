@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../../db.js'); // Caminho para o seu arquivo de conexão que você mostrou antes
+const sequelize = require('./db'); // Caminho para o seu arquivo de conexão que você mostrou antes
 
 const Usuario = sequelize.define('Usuario', {
     nome: {
