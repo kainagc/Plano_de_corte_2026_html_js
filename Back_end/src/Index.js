@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const Usuario = require('./Usuarios');
+const Cliente = require('./Cliente');
 const sequelize = require('./db');
 
 const app = express();
@@ -9,7 +10,7 @@ sequelize.authenticate()
   .then(() => console.log("Banco conectado"))
   .catch(err => console.error("Erro ao conectar:", err));
 
-sequelize.sync();
+sequelize.sync({ alter: true });
 
 app.use(express.json());
 
@@ -52,6 +53,32 @@ app.post('/api/login', async (req, res) => {
   } catch (erro) {
     console.error(erro);
     res.status(500).json({ erro: "Erro ao processar o login." });
+  }
+});
+
+app.get('/api/clientes', async (req, res) => {
+  try {
+    const clientes = await Cliente.findAll({
+      attributes: ['id', 'nome', 'cpf', 'endereco', 'telefone', 'data']
+    });
+    res.json(clientes);
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao buscar clientes.' });
+  }
+});
+
+app.post('/api/clientes', async (req, res) => {
+  try {
+    const { nome, cpf, endereco, telefone, data } = req.body;
+    if (!nome) {
+      return res.status(400).json({ erro: 'Nome é obrigatório.' });
+    }
+    const cliente = await Cliente.create({ nome, cpf, endereco, telefone, data });
+    res.status(201).json(cliente);
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao salvar cliente.' });
   }
 });
 
