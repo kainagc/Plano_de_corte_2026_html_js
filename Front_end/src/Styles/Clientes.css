@@ -1,0 +1,38 @@
+body{
+    background-color: #4E4E4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cliprinc{
+    margin-top: 140px;
+    display: flex;
+    width: 1450px;
+    height: 650px;
+    background-color: #666666;
+    
+    border-radius: 20px;
+    border: solid 3px;
+    border-color: white;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-around;
+
+    position: relative;
+}
+
+#novocli{
+    width: 400px;
+    height: 80px;
+    border: solid 3px;
+    border-color: white;
+    border-radius: 20px;
+    background-color: #4E4E4E;
+
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+}

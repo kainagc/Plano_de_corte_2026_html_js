@@ -76,6 +76,14 @@ app.get('/App/Config', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Config.html'));
 });
 
+app.get('/App/Clientes', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Views/Clientes.html'));
+});
+
+app.get('/App/Clientes/Novo', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Views/Novo_Cliente.html'));
+});
+
 app.listen(3000, () => {
   console.log("Servidor rodando em http://localhost:3000");
 });
