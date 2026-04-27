@@ -41,4 +41,6 @@ Ele possibilita o cadastro de peças, chapas e a geração de planos de corte au
 
 ---
 
-## 📊 Estrutura do Projeto
+Que nem expliquei em sala, a ideia era fazer um plano de corte, mudei um pouco a ideia, vai ser ERP 
+
+https://docs.google.com/document/d/1w0n5aMYrzFxjx-7WGiwrhXAixaPlj748ACu_uD8jkuY/edit?usp=sharing
