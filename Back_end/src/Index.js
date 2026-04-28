@@ -82,6 +82,21 @@ app.post('/api/clientes', async (req, res) => {
   }
 });
 
+app.delete('/api/clientes/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const cliente = await Cliente.findByPk(id);
+    if (!cliente) {
+      return res.status(404).json({ erro: 'Cliente não encontrado.' });
+    }
+    await cliente.destroy();
+    res.json({ mensagem: 'Cliente excluído com sucesso.' });
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao excluir cliente.' });
+  }
+});
+
 // Rotas páginas
 app.get('/Cadastro', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Cadastro.html'));

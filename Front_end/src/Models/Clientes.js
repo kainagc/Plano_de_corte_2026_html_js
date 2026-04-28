@@ -26,12 +26,14 @@ document.addEventListener('DOMContentLoaded', async function () {
                 <p><strong>Endereço:</strong> ${cliente.endereco || '-'}</p>
                 <p><strong>Telefone:</strong> ${cliente.telefone || '-'}</p>
                 <p><strong>Data:</strong> ${cliente.data || '-'}</p>
+                <button class="btn-excluir" type="button">Excluir cliente</button>
             </div>
         `;
 
         const header = card.querySelector('.cliente-header');
         const details = card.querySelector('.cliente-details');
         const viewText = header.querySelector('.cliente-view');
+        const excluirBtn = card.querySelector('.btn-excluir');
         details.style.display = 'none';
         viewText.textContent = 'Ver detalhes';
         header.style.cursor = 'pointer';
@@ -49,6 +51,26 @@ document.addEventListener('DOMContentLoaded', async function () {
             const isHidden = details.style.display === 'none';
             details.style.display = isHidden ? 'block' : 'none';
             viewText.textContent = isHidden ? 'Ocultar detalhes' : 'Ver detalhes';
+        });
+
+        excluirBtn.addEventListener('click', async (event) => {
+            event.stopPropagation();
+            const confirmacao = confirm(`Deseja realmente excluir ${cliente.nome}?`);
+            if (!confirmacao) return;
+
+            const response = await fetch(`/api/clientes/${cliente.id}`, {
+                method: 'DELETE'
+            });
+
+            if (!response.ok) {
+                alert('Não foi possível excluir o cliente. Tente novamente.');
+                return;
+            }
+
+            card.remove();
+            if (clientesList.children.length === 0) {
+                clientesList.textContent = 'Nenhum cliente cadastrado';
+            }
         });
 
         clientesList.appendChild(card);
