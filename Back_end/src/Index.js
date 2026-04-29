@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const Usuario = require('./Usuarios');
 const Cliente = require('./Cliente');
+const Projeto = require('./Projeto');
 const sequelize = require('./db');
 
 const app = express();
@@ -97,6 +98,32 @@ app.delete('/api/clientes/:id', async (req, res) => {
   }
 });
 
+app.get('/api/projetos', async (req, res) => {
+  try {
+    const projetos = await Projeto.findAll({
+      attributes: ['id', 'nome', 'ambiente', 'clienteId', 'clienteNome', 'etapa', 'dataCriacao']
+    });
+    res.json(projetos);
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao buscar projetos.' });
+  }
+});
+
+app.post('/api/projetos', async (req, res) => {
+  try {
+    const { nome, ambiente, clienteId, clienteNome, etapa, dataCriacao } = req.body;
+    if (!nome || !clienteId || !clienteNome) {
+      return res.status(400).json({ erro: 'Nome do projeto e cliente são obrigatórios.' });
+    }
+    const projeto = await Projeto.create({ nome, ambiente, clienteId, clienteNome, etapa, dataCriacao });
+    res.status(201).json(projeto);
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao salvar projeto.' });
+  }
+});
+
 // Rotas páginas
 app.get('/Cadastro', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Cadastro.html'));
@@ -124,6 +151,14 @@ app.get('/App/Clientes', (req, res) => {
 
 app.get('/App/Clientes/Novo', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Novo_Cliente.html'));
+});
+
+app.get('/App/Projetos', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Views/Projetos.html'));
+});
+
+app.get('/App/Projetos/Novo', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Views/Novo_Projeto.html'));
 });
 
 app.listen(3000, () => {
