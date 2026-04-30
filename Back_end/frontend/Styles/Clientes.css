@@ -1,0 +1,103 @@
+body{
+    background-color: #4E4E4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cliprinc{
+    margin-top: 140px;
+    display: flex;
+    width: 1450px;
+    background-color: #666666;
+    padding: 140px 40px 40px;
+
+    border-radius: 20px;
+    border: solid 3px;
+    border-color: white;
+    color: white;
+    align-items: flex-start;
+    justify-content: center;
+
+    position: relative;
+    box-sizing: border-box;
+}
+
+#novocli{
+    width: 400px;
+    height: 80px;
+    border: solid 3px;
+    border-color: white;
+    border-radius: 20px;
+    background-color: #4E4E4E;
+
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+    z-index: 2;
+}
+
+#clientesList{
+    width: 100%;
+    padding-top: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.cliente-card {
+    width: 560px;
+    margin: 16px auto;
+    padding: 18px 22px;
+    border: solid 3px white;
+    border-radius: 20px;
+    background-color: #4E4E4E;
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.cliente-card:hover {
+    background-color: #5d5d5d;
+}
+
+.cliente-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cliente-details {
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+.btn-excluir {
+    margin-top: 14px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: #c0392b;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-excluir:hover {
+    background-color: #a93226;
+}
+
+#clientesTable{
+    background-color: rgb(11, 46, 77);
+    width: 600px;
+    display: flex;
+    justify-content: center;
+}
+
+#teste{
+    gap: 10px;
+}

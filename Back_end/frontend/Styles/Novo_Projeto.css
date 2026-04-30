@@ -1,0 +1,75 @@
+body {
+    background-color: #4E4E4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#novoprojrinc {
+    margin-top: 140px;
+    display: flex;
+    width: 1450px;
+    min-height: 650px;
+    background-color: #666666;
+    padding: 140px 60px 40px;
+    border-radius: 20px;
+    border: solid 3px;
+    border-color: white;
+    color: white;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+#novoproj {
+    width: 400px;
+    height: 80px;
+    border: solid 3px;
+    border-color: white;
+    border-radius: 20px;
+    background-color: #4E4E4E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+}
+
+.campnovoproj {
+    width: 250px;
+    height: 50px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    padding: 0 12px;
+}
+
+#botproj {
+    width: 240px;
+    height: 50px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-top: 20px;
+    color: #4E4E4E;
+    cursor: pointer;
+}
+
+#botproj:hover {
+    background-color: #dddddd;
+}
+
+#novoprojrinc > div {
+    margin-top: 20px;
+}
