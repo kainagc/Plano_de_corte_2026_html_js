@@ -9,7 +9,10 @@ body{
     margin-top: 140px;
     display: flex;
     width: 1450px;
+    width: 95%;
+    max-width: 1450px;
     min-height: 650px;
+    height: auto;
     background-color: #666666;
     padding: 140px 60px 40px;
     
@@ -27,6 +30,8 @@ body{
 
 #novocli{
     width: 400px;
+    width: 90%;
+    max-width: 400px;
     height: 80px;
     border: solid 3px;
     border-color: white;
@@ -67,4 +72,13 @@ body{
     background-color: white;
     margin-top: 20px;
     color: #4E4E4E;
+}
+
+@media (max-width: 768px) {
+    #novocliprinc {
+        margin-top: 20px;
+        padding: 120px 20px 40px;
+    }
+    #novocli { height: 60px; }
+    .campnovocli { width: 100%; max-width: 250px; }
 }

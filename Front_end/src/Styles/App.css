@@ -11,6 +11,10 @@ body {
   display: flex;
   width: 1450px;
   height: 650px;
+  width: 95%;
+  max-width: 1450px;
+  min-height: 650px;
+  height: auto;
   background-color: #666666;
   flex-direction: column;
   border-radius: 20px;
@@ -33,10 +37,29 @@ body {
   margin-top: 20px;
   width: 90%;
   height: 380px;
+  width: 100%;
+  height: auto;
+  padding: 40px 0;
   background-color: #666666;
   margin-left: 60px;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+    #principal {
+        margin-top: 20px;
+    }
+    #logo {
+        width: 200px;
+        margin: 0 auto;
+    }
+    #menu {
+        flex-direction: column;
+        margin-left: 0;
+    }
 }
 
 #bot1{
