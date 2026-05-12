@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: plano-corte-backend
+  template:
+    metadata:
+      labels:
+        app: plano-corte-backend
+    spec:
+      containers:
+        - name: backend-container
+          image: kainagc/plano_de_corte_2026_html_js-app:1.0.9
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DB_HOST
+              value: "db"
+            - name: DB_USER
+              value: "postgres"
+            - name: DB_PASS
+              value: "postgres"
+            - name: DB_NAME
+              value: "plano_de_corte_2026"
+          volumeMounts:
+            - name: frontend-volume
+              mountPath: /app/frontend
+      volumes:
+        - name: frontend-volume
+          hostPath:
+              path: /app/frontend
+              type: Directory 
