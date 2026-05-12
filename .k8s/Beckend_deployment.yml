@@ -26,11 +26,4 @@ spec:
               value: "postgres"
             - name: DB_NAME
               value: "plano_de_corte_2026"
-          volumeMounts:
-            - name: frontend-volume
-              mountPath: /app/frontend
-      volumes:
-        - name: frontend-volume
-          hostPath:
-              path: /app/frontend
-              type: Directory 
+          
