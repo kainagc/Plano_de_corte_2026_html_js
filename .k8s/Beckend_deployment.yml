@@ -19,11 +19,43 @@ spec:
             - containerPort: 3000
           env:
             - name: DB_HOST
-              value: "db"
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: DATABASE_URL
             - name: DB_USER
-              value: "postgres"
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: POSTGRES_USER
             - name: DB_PASS
-              value: "postgres"
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_PASSWORD
             - name: DB_NAME
-              value: "plano_de_corte_2026"
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: POSTGRES_DB
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
           
