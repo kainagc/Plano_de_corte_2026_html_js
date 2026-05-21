@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1779147318924" clover="3.2.0">
-  <project timestamp="1779147318925" name="All files">
+<coverage generated="1779325455775" clover="3.2.0">
+  <project timestamp="1779325455775" name="All files">
     <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="15" coveredelements="15" complexity="0" loc="15" ncloc="15" packages="1" files="4" classes="4"/>
     <file name="Cliente.js" path="C:\Users\kaina\OneDrive\Documentos\programação 2026\Plano_de_corte_2026_html_js\Back_end\src\Cliente.js">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
