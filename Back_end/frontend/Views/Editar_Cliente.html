@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" href="/Styles/Novo_Cliente.css">
+    <link rel="stylesheet" href="/Styles/Menu.css">
+    <style>
+        .btn-excluir {
+            width: 240px;
+            height: 50px;
+            border: solid 3px white;
+            border-radius: 20px;
+            background-color: #c0392b;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .btn-excluir:hover { background-color: #a93226; }
+
+        #botcli h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-superior">
+        <a href="/App" class="item-menu">Home</a>
+        <a href="/App/Clientes" class="item-menu">Clientes</a>
+        <a href="/App/Projetos" class="item-menu">Projetos</a>
+        <a href="/App/Estoque" class="item-menu">Estoque</a>
+        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+    </div>
+    <div id="novocliprinc">
+        <div style="margin-bottom: 20px;"><h1>Editar Cliente</h1></div>
+        <div><h1>Nome</h1></div>
+        <input type="text" class="campnovocli" id="nomeInput">
+        <div><h1>CPF</h1></div>
+        <input type="text" class="campnovocli" id="cpfInput">
+        <div><h1>Endereço</h1></div>
+        <input type="text" class="campnovocli" id="enderecoInput">
+        <div><h1>Telefone</h1></div>
+        <input type="text" class="campnovocli" id="telefoneInput">
+        
+        <div id='botcli' style="margin-top: 30px;">
+            <h1>Salvar Alterações</h1>
+        </div>
+        <div class="btn-excluir" id="btnExcluir">
+            Excluir Cliente
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const clienteId = urlParams.get('id');
+
+        async function carregarDados() {
+            const response = await fetch(`/api/clientes/${clienteId}`);
+            const data = await response.json();
+            document.getElementById('nomeInput').value = data.nome;
+            document.getElementById('cpfInput').value = data.cpf;
+            document.getElementById('enderecoInput').value = data.endereco;
+            document.getElementById('telefoneInput').value = data.telefone;
+        }
+
+        document.getElementById('botcli').addEventListener('click', async () => {
+            const corpo = {
+                nome: document.getElementById('nomeInput').value,
+                cpf: document.getElementById('cpfInput').value,
+                endereco: document.getElementById('enderecoInput').value,
+                telefone: document.getElementById('telefoneInput').value
+            };
+
+            const response = await fetch(`/api/clientes/${clienteId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(corpo)
+            });
+
+            if (response.ok) window.location.href = '/App/Clientes';
+            else alert('Erro ao atualizar cliente');
+        });
+
+        document.getElementById('btnExcluir').addEventListener('click', async () => {
+            if (!confirm('Deseja realmente excluir este cliente?')) return;
+
+            const response = await fetch(`/api/clientes/${clienteId}`, { method: 'DELETE' });
+            const data = await response.json();
+
+            if (response.ok) {
+                window.location.href = '/App/Clientes';
+            } else {
+                alert(data.erro || 'Erro ao excluir cliente');
+            }
+        });
+
+        carregarDados();
+    </script>
+</body>
+</html>

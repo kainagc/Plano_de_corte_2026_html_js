@@ -1,0 +1,37 @@
+#menu-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: #4E4E4E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 3px solid white;
+    z-index: 1000;
+}
+
+.item-menu {
+    font-family: Arial, sans-serif; /* Garante a mesma fonte em todas as páginas */
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 25px;
+    height: 50px;
+    width: 160px; /* Trocamos min-width por width fixo para total simetria */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: #666666;
+    transition: 0.3s;
+    box-sizing: border-box;
+    white-space: nowrap; /* Impede que o texto quebre linha */
+    line-height: normal;
+}
+
+.item-menu:hover { background-color: #4E4E4E; }

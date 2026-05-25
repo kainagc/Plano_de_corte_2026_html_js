@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Styles/Estoque.css">
+    <link rel="stylesheet" href="/Styles/Menu.css">
+    <script src="/Models/Estoque.js"></script>
+</head>
+<body>
+    <div id="menu-superior">
+        <a href="/App" class="item-menu">Home</a>
+        <a href="/App/Clientes" class="item-menu">Clientes</a>
+        <a href="/App/Projetos" class="item-menu">Projetos</a>
+        <a href="/App/Estoque" class="item-menu">Estoque</a>
+        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+    </div>
+    <div id="princestoque">
+        <div id="topoestoque">
+            <div id="novoprod" onclick="window.location.href='/App/Estoque/Novo'">
+                <h1>Criar produto</h1>
+            </div>
+        </div>
+        <div id="estoquelist"></div>
+    </div>
+</body>
+</html>

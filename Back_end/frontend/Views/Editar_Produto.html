@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Produto</title>
+    <link rel="stylesheet" href="/Styles/Novo_Produto.css">
+    <link rel="stylesheet" href="/Styles/Menu.css">
+    <style>
+        .btn-excluir {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-excluir:hover { background-color: #a93226; }
+    </style>
+</head>
+<body>
+    <div id="menu-superior">
+        <a href="/App" class="item-menu">Home</a>
+        <a href="/App/Clientes" class="item-menu">Clientes</a>
+        <a href="/App/Projetos" class="item-menu">Projetos</a>
+        <a href="/App/Estoque" class="item-menu">Estoque</a>
+        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+    </div>
+    <div id="novoprodprinc">
+        <div id="titulo_pag">
+            <h1>Editar Produto</h1>
+        </div>
+        <div><h1>Nome</h1></div>
+        <div><input type="text" class="campnovoprod" id="nomeInput"></div>
+        <div><h1>Descrição</h1></div>
+        <div><input type="text" class="campnovoprod" id="descInput"></div>
+        <div><h1>Quantidade</h1></div>
+        <div><input type="number" class="campnovoprod" id="quantInput"></div>
+        
+        <div id='botprod'>
+            <h1>Salvar Alterações</h1>
+        </div>
+        <button class="btn-excluir" id="btnExcluir">Excluir Produto</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const produtoId = urlParams.get('id');
+
+        async function carregarDados() {
+            const response = await fetch(`/api/produtos/${produtoId}`);
+            const produto = await response.json();
+            document.getElementById('nomeInput').value = produto.nome;
+            document.getElementById('descInput').value = produto.descricao;
+            document.getElementById('quantInput').value = produto.quantidade;
+        }
+
+        document.getElementById('botprod').addEventListener('click', async () => {
+            const nome = document.getElementById('nomeInput').value;
+            const descricao = document.getElementById('descInput').value;
+            const quantidade = document.getElementById('quantInput').value;
+
+            const response = await fetch(`/api/produtos/${produtoId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nome, descricao, quantidade: parseInt(quantidade) })
+            });
+
+            if (response.ok) {
+                window.location.href = '/App/Estoque';
+            } else {
+                alert('Erro ao atualizar produto');
+            }
+        });
+
+        document.getElementById('btnExcluir').addEventListener('click', async () => {
+            if (!confirm('Tem certeza que deseja excluir este produto?')) return;
+
+            const response = await fetch(`/api/produtos/${produtoId}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                window.location.href = '/App/Estoque';
+            } else {
+                alert('Erro ao excluir produto');
+            }
+        });
+
+        carregarDados();
+    </script>
+</body>
+</html>

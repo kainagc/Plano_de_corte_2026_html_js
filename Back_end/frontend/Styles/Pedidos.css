@@ -1,0 +1,78 @@
+body {
+    background-color: #4E4E4E;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#pedidosprinc {
+    margin-top: 140px;
+    display: flex;
+    width: 1450px;
+    min-height: 650px;
+    background-color: #666666;
+    padding: 140px 60px 40px;
+    border-radius: 20px;
+    border: solid 3px white;
+    color: white;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+#pedidosprinc h1 {
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+#titulo_pag {
+    width: 400px;
+    height: 80px;
+    border: solid 3px white;
+    border-radius: 20px;
+    background-color: #4E4E4E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+}
+
+.camppedido {
+    width: 400px;
+    height: 50px;
+    border: solid 3px #4E4E4E;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 0 15px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+#botbaixa {
+    width: 240px;
+    height: 60px;
+    border: solid 3px #4E4E4E;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-top: 40px;
+    color: #4E4E4E;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#botbaixa:hover {
+    background-color: #ddd;
+}

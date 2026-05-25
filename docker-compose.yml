@@ -2,16 +2,16 @@ version: "3.9"
 
 services:
   app:
-    #build: .
-    container_name: plano_corte_app
-    build: ./Back_end
-    #image: kainagc/plano_de_corte_2026_html_js-app:1.0.9
+    build: .
+    #container_name: plano_corte_app
+    #build: ./Back_end
+    image: kainagc/plano_de_corte_2026_html_js-app:1.0.16
     ports:
       - "3000:3000"
     depends_on:
       - db
     volumes:
-      - ./Front_end/src:/app/frontend
+      - ./Back_end/frontend:/app/frontend
     environment:
       - DB_HOST=db
       - DB_USER=postgres

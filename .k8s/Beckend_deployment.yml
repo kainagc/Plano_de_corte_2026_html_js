@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend-container
-          image: kainagc/plano_de_corte_2026_html_js-app:1.0.9
+          image: kainagc/plano_de_corte_2026_html_js-app:1.0.16
           ports:
             - containerPort: 3000
           env:

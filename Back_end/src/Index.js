@@ -3,6 +3,7 @@ const path = require('path');
 const Usuario = require('./Usuarios');
 const Cliente = require('./Cliente');
 const Projeto = require('./Projeto');
+const Produto = require('./Produto');
 const sequelize = require('./db');
 
 const app = express();
@@ -220,6 +221,82 @@ app.post('/api/agenda', async (req, res) => {
   res.status(201).json({ mensagem: "Agendado com sucesso" });
 });
 
+// API Produtos
+app.get('/api/produtos', async (req, res) => {
+  try {
+    const produtos = await Produto.findAll();
+    res.json(produtos);
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao buscar produtos.' });
+  }
+});
+
+app.post('/api/produtos', async (req, res) => {
+  try {
+    const { nome, descricao, quantidade } = req.body;
+    if (!nome) {
+      return res.status(400).json({ erro: 'Nome é obrigatório.' });
+    }
+    const produto = await Produto.create({ nome, descricao, quantidade });
+    res.status(201).json(produto);
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao salvar produto.' });
+  }
+});
+
+app.get('/api/produtos/:id', async (req, res) => {
+  try {
+    const produto = await Produto.findByPk(req.params.id);
+    if (!produto) return res.status(404).json({ erro: "Produto não encontrado" });
+    res.json(produto);
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao buscar produto" });
+  }
+});
+
+app.put('/api/produtos/:id', async (req, res) => {
+  try {
+    const { nome, descricao, quantidade } = req.body;
+    const produto = await Produto.findByPk(req.params.id);
+    if (!produto) return res.status(404).json({ erro: "Produto não encontrado" });
+
+    await produto.update({ nome, descricao, quantidade });
+    res.json({ mensagem: "Produto atualizado com sucesso!" });
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao atualizar produto" });
+  }
+});
+
+app.delete('/api/produtos/:id', async (req, res) => {
+  try {
+    const produto = await Produto.findByPk(req.params.id);
+    if (!produto) return res.status(404).json({ erro: "Produto não encontrado" });
+    await produto.destroy();
+    res.json({ mensagem: "Produto excluído com sucesso." });
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao excluir produto" });
+  }
+});
+
+app.post('/api/produtos/baixa', async (req, res) => {
+  try {
+    const { id, quantidade } = req.body;
+    const produto = await Produto.findByPk(id);
+    if (!produto) return res.status(404).json({ erro: "Produto não encontrado" });
+    
+    if (produto.quantidade < quantidade) {
+      return res.status(400).json({ erro: "Estoque insuficiente" });
+    }
+
+    await produto.update({ quantidade: produto.quantidade - quantidade });
+    res.json({ mensagem: "Baixa realizada com sucesso!", novaQuantidade: produto.quantidade });
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao processar baixa no estoque" });
+  }
+});
+
 // Rotas páginas
 app.get('/Cadastro', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Cadastro.html'));
@@ -241,6 +318,22 @@ app.get('/App/Config', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Config.html'));
 });
 
+app.get('/App/Estoque', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Views/Estoque.html'));
+});
+
+app.get('/App/Estoque/Novo', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Views/Novo_Produto.html'));
+});
+
+app.get('/App/Estoque/Editar', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Views/Editar_Produto.html'));
+});
+
+app.get('/App/Pedido', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Views/Pedidos.html'));
+});
+
 app.get('/App/Clientes', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Clientes.html'));
 });
@@ -250,7 +343,7 @@ app.get('/App/Clientes/Novo', (req, res) => {
 });
 
 app.get('/App/Clientes/Editar', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/Models/Editar_Cliente.html'));
+  res.sendFile(path.join(__dirname, '../frontend/Views/Editar_Cliente.html'));
 });
 
 app.get('/App/Projetos', (req, res) => {
@@ -262,7 +355,7 @@ app.get('/App/Projetos/Novo', (req, res) => {
 });
 
 app.get('/App/Projetos/Editar', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/Models/Editar_Projeto.html'));
+  res.sendFile(path.join(__dirname, '../frontend/Views/Editar_Projeto.html'));
 });
 
 if (process.env.NODE_ENV !== 'test') {

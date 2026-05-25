@@ -101,6 +101,19 @@ body {
   color: white;
 }
 
+#bot4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: #4E4E4E;
+  border-radius: 20px;
+  border: solid 3px;
+  border-color: white;
+  color: white;
+}
+
 #bot1id{
   text-decoration: none;
 }

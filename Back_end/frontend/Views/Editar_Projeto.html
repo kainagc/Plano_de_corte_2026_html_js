@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Projeto</title>
+    <link rel="stylesheet" href="/Styles/Novo_Projeto.css">
+    <link rel="stylesheet" href="/Styles/Menu.css">
+    <style>
+        .btn-excluir {
+            width: 240px;
+            height: 50px;
+            border: solid 3px white;
+            border-radius: 20px;
+            background-color: #c0392b;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .btn-excluir:hover { background-color: #a93226; }
+
+        #botproj h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-superior">
+        <a href="/App" class="item-menu">Home</a>
+        <a href="/App/Clientes" class="item-menu">Clientes</a>
+        <a href="/App/Projetos" class="item-menu">Projetos</a>
+        <a href="/App/Estoque" class="item-menu">Estoque</a>
+        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+    </div>
+    <div id="novoprojrinc">
+        <div style="margin-bottom: 20px;"><h1>Editar Projeto</h1></div>
+        <div><h1>Nome do Projeto</h1></div>
+        <input type="text" class="campnovoproj" id="nomeInput">
+        <div><h1>Etapa</h1></div>
+        <input type="text" class="campnovoproj" id="etapaInput">
+        
+        <div id="botproj" style="margin-top: 30px;">
+            <h1>Salvar Alterações</h1>
+        </div>
+        <div class="btn-excluir" id="btnExcluir">
+            Excluir Projeto
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const projetoId = urlParams.get('id');
+
+        async function carregarDados() {
+            const response = await fetch(`/api/projetos/${projetoId}`);
+            const data = await response.json();
+            document.getElementById('nomeInput').value = data.nome;
+            document.getElementById('etapaInput').value = data.etapa;
+        }
+
+        document.getElementById('botproj').addEventListener('click', async () => {
+            const response = await fetch(`/api/projetos/${projetoId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    nome: document.getElementById('nomeInput').value,
+                    etapa: document.getElementById('etapaInput').value
+                })
+            });
+            if (response.ok) window.location.href = '/App/Projetos';
+            else alert('Erro ao atualizar projeto');
+        });
+
+        document.getElementById('btnExcluir').addEventListener('click', async () => {
+            if (!confirm('Deseja excluir este projeto?')) return;
+            const response = await fetch(`/api/projetos/${projetoId}`, { method: 'DELETE' });
+            if (response.ok) window.location.href = '/App/Projetos';
+            else {
+                const data = await response.json();
+                alert(data.erro || 'Erro ao excluir');
+            }
+        });
+
+        carregarDados();
+    </script>
+</body>
+</html>
