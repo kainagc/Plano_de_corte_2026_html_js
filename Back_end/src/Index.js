@@ -95,13 +95,45 @@ app.delete('/api/clientes/:id', async (req, res) => {
     const { id } = req.params;
     const cliente = await Cliente.findByPk(id);
     if (!cliente) {
-      return res.status(404).json({ erro: 'Cliente não encontrado.' });
+      return res.status(404).json({ erro: "Cliente não encontrado." });
     }
+
+    // Validação de integridade: Impede excluir cliente que possui projetos vinculados
+    const projetosVinculados = await Projeto.findOne({ where: { clienteId: id } });
+    if (projetosVinculados) {
+      return res.status(400).json({ 
+        erro: "Não é possível excluir um cliente que possui projetos vinculados." 
+      });
+    }
+
     await cliente.destroy();
-    res.json({ mensagem: 'Cliente excluído com sucesso.' });
+    res.json({ mensagem: "Cliente excluído com sucesso." });
   } catch (erro) {
     console.error(erro);
     res.status(500).json({ erro: 'Erro ao excluir cliente.' });
+  }
+});
+
+app.get('/api/clientes/:id', async (req, res) => {
+  try {
+    const cliente = await Cliente.findByPk(req.params.id);
+    if (!cliente) return res.status(404).json({ erro: "Cliente não encontrado" });
+    res.json(cliente);
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao buscar cliente" });
+  }
+});
+
+app.put('/api/clientes/:id', async (req, res) => {
+  try {
+    const { nome, cpf, endereco, telefone, data } = req.body;
+    const cliente = await Cliente.findByPk(req.params.id);
+    if (!cliente) return res.status(404).json({ erro: "Cliente não encontrado" });
+
+    await cliente.update({ nome, cpf, endereco, telefone, data });
+    res.json({ mensagem: "Cliente atualizado com sucesso!" });
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao atualizar cliente" });
   }
 });
 
@@ -134,6 +166,29 @@ app.post('/api/projetos', async (req, res) => {
   }
 });
 
+app.get('/api/projetos/:id', async (req, res) => {
+  try {
+    const projeto = await Projeto.findByPk(req.params.id);
+    if (!projeto) return res.status(404).json({ erro: "Projeto não encontrado" });
+    res.json(projeto);
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao buscar projeto" });
+  }
+});
+
+app.put('/api/projetos/:id', async (req, res) => {
+  try {
+    const { nome, etapa } = req.body;
+    const projeto = await Projeto.findByPk(req.params.id);
+    if (!projeto) return res.status(404).json({ erro: "Projeto não encontrado" });
+
+    await projeto.update({ nome, etapa });
+    res.json({ mensagem: "Projeto atualizado com sucesso!" });
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao atualizar projeto" });
+  }
+});
+
 app.delete('/api/projetos/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -148,8 +203,9 @@ app.delete('/api/projetos/:id', async (req, res) => {
     if (!projeto) return res.status(404).json({ erro: "Projeto não encontrado" });
 
     await projeto.destroy();
-    res.json({ mensagem: "Projeto excluído!" });
+    res.json({ mensagem: "Projeto excluído com sucesso." });
   } catch (erro) {
+    console.error(erro);
     res.status(500).json({ erro: "Erro ao excluir projeto" });
   }
 });
@@ -193,12 +249,20 @@ app.get('/App/Clientes/Novo', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Novo_Cliente.html'));
 });
 
+app.get('/App/Clientes/Editar', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Models/Editar_Cliente.html'));
+});
+
 app.get('/App/Projetos', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Projetos.html'));
 });
 
 app.get('/App/Projetos/Novo', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/Views/Novo_Projeto.html'));
+});
+
+app.get('/App/Projetos/Editar', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/Models/Editar_Projeto.html'));
 });
 
 if (process.env.NODE_ENV !== 'test') {
