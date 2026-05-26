@@ -283,6 +283,12 @@ app.delete('/api/produtos/:id', async (req, res) => {
 app.post('/api/produtos/baixa', async (req, res) => {
   try {
     const { id, quantidade } = req.body;
+
+    // Regra de negócio: impede baixa com quantidade zerada ou negativa
+    if (quantidade <= 0) {
+      return res.status(400).json({ erro: "A quantidade de baixa deve ser maior que zero." });
+    }
+
     const produto = await Produto.findByPk(id);
     if (!produto) return res.status(404).json({ erro: "Produto não encontrado" });
     
