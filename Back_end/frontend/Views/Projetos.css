@@ -52,7 +52,7 @@ body {
     color: white;
     padding: 12px 24px;
     border-radius: 12px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -75,21 +75,18 @@ body {
 .projeto-card {
     background-color: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 14px 24px;
+    border-radius: 12px;
+    padding: 16px 24px;
     color: #1e293b;
     cursor: pointer;
-    box-sizing: border-box;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    width: 100%;
     display: flex;
     align-items: center;
 }
 
 .projeto-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.06);
     border-color: #6366f1;
 }
 
@@ -98,4 +95,19 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.projeto-header strong {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.projeto-meta {
+    font-size: 13px;
+    color: #6366f1;
+    font-weight: 600;
+    background-color: #eff6ff;
+    padding: 6px 14px;
+    border-radius: 8px;
 }

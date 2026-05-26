@@ -6,48 +6,52 @@
     <title>Editar Projeto</title>
     <link rel="stylesheet" href="/Styles/Novo_Projeto.css">
     <link rel="stylesheet" href="/Styles/Menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         .btn-excluir {
-            width: 240px;
-            height: 50px;
-            border: solid 3px white;
-            border-radius: 20px;
-            background-color: #c0392b;
-            color: white;
+            width: 100%;
+            height: 48px;
+            border: 1.5px solid #fee2e2;
+            border-radius: 12px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            margin-top: 12px;
+            color: #ef4444;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 20px;
+            transition: all 0.3s ease;
         }
-        .btn-excluir:hover { background-color: #a93226; }
-
-        #botproj h1 {
-            font-size: 18px;
-            margin: 0;
+        .btn-excluir:hover {
+            background-color: #fef2f2;
+            border-color: #fca5a5;
+            color: #dc2626;
         }
     </style>
 </head>
 <body>
     <div id="menu-superior">
-        <a href="/App" class="item-menu">Home</a>
+        <a href="/App" class="item-menu">Dashboard</a>
         <a href="/App/Clientes" class="item-menu">Clientes</a>
         <a href="/App/Projetos" class="item-menu">Projetos</a>
         <a href="/App/Estoque" class="item-menu">Estoque</a>
-        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+        <a href="/App/Pedido" class="item-menu">Vendas</a>
     </div>
     <div id="novoprojrinc">
-        <div style="margin-bottom: 20px;"><h1>Editar Projeto</h1></div>
-        <div><h1>Nome do Projeto</h1></div>
+        <h1>Editar Projeto</h1>
+        
+        <label class="label-campo">Nome do Projeto</label>
         <input type="text" class="campnovoproj" id="nomeInput">
-        <div><h1>Etapa</h1></div>
+        
+        <label class="label-campo">Etapa</label>
         <input type="text" class="campnovoproj" id="etapaInput">
         
-        <div id="botproj" style="margin-top: 30px;">
+        <div id="botproj">
             <h1>Salvar Alterações</h1>
         </div>
+
         <div class="btn-excluir" id="btnExcluir">
             Excluir Projeto
         </div>

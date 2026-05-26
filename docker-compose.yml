@@ -5,7 +5,7 @@ services:
     build: .
     #container_name: plano_corte_app
     #build: ./Back_end
-    image: kainagc/plano_de_corte_2026_html_js-app:1.0.16
+    image: kainagc/plano_de_corte_2026_html_js-app:1.0.17
     ports:
       - "3000:3000"
     depends_on:

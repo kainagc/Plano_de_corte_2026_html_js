@@ -3,51 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projetos</title>
+    <title>ERP 2026 | Projetos</title>
     <link rel="stylesheet" href="/Styles/Projetos.css">
     <link rel="stylesheet" href="/Styles/Menu.css">
-    <style>
-        /* Estilo para os cards de projetos igual ao estoque */
-        .projeto-card {
-            width: 90%;
-            background-color: #4E4E4E;
-            border: 2px solid white;
-            border-radius: 15px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-            cursor: pointer;
-            margin-bottom: 20px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-            transition: 0.3s;
-        }
-        .projeto-card:hover { background-color: #5d5d5d; }
-        .projeto-info h2 { margin: 0; font-size: 22px; text-transform: uppercase; }
-        .projeto-info p { margin: 5px 0 0; font-size: 16px; color: #ddd; }
-        .projeto-status {
-            background-color: white;
-            color: #4E4E4E;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="menu-superior">
-        <a href="/App" class="item-menu">Home</a>
+        <a href="/App" class="item-menu">Dashboard</a>
         <a href="/App/Clientes" class="item-menu">Clientes</a>
         <a href="/App/Projetos" class="item-menu">Projetos</a>
         <a href="/App/Estoque" class="item-menu">Estoque</a>
-        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+        <a href="/App/Pedido" class="item-menu">Vendas</a>
     </div>
-    <div id="princproj">
-        <div id="topoProj">
-            <div id="novoproj" onclick="window.location.href='/App/Projetos/Novo'">
-                <h1>Criar projeto</h1>
-            </div>
+    <div id="cliprinc">
+        <div id="novocli">
+            <h1>Projetos</h1>
+            <a href="/App/Projetos/Novo" class="btn-primary">Novo Projeto</a>
         </div>
         <div id="projlist"></div>
     </div>
@@ -62,17 +34,16 @@
                     const projetos = await response.json();
 
                     if (projetos.length === 0) {
-                        listContainer.innerHTML = '<h1 style="color: white; opacity: 0.5; margin-top: 50px;">Nenhum projeto cadastrado</h1>';
+                        listContainer.innerHTML = '<h1 style="color: #64748b; opacity: 0.5; margin-top: 50px; text-align: center; font-size: 20px;">Nenhum projeto encontrado</h1>';
                         return;
                     }
 
                     listContainer.innerHTML = projetos.map(proj => `
                         <div class="projeto-card" onclick="window.location.href='/App/Projetos/Editar?id=${proj.id}'">
-                            <div class="projeto-info">
-                                <h2>${proj.nome}</h2>
-                                <p>Cliente: ${proj.clienteNome || '-'}</p>
+                            <div class="projeto-header">
+                                <strong>${proj.ambiente || 'Geral'}</strong>
+                                <span class="projeto-meta">${proj.clienteNome || 'Cliente'}</span>
                             </div>
-                            <div class="projeto-status">${proj.etapa || 'Pendente'}</div>
                         </div>
                     `).join('');
                 } catch (error) { console.error('Erro:', error); }

@@ -6,21 +6,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="/Styles/Estoque.css">
     <link rel="stylesheet" href="/Styles/Menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="/Models/Estoque.js"></script>
 </head>
 <body>
     <div id="menu-superior">
-        <a href="/App" class="item-menu">Home</a>
+        <a href="/App" class="item-menu">Dashboard</a>
         <a href="/App/Clientes" class="item-menu">Clientes</a>
         <a href="/App/Projetos" class="item-menu">Projetos</a>
         <a href="/App/Estoque" class="item-menu">Estoque</a>
-        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+        <a href="/App/Pedido" class="item-menu">Vendas</a>
     </div>
-    <div id="princestoque">
-        <div id="topoestoque">
-            <div id="novoprod" onclick="window.location.href='/App/Estoque/Novo'">
-                <h1>Criar produto</h1>
-            </div>
+    <div id="cliprinc">
+        <div id="novocli">
+            <h1>Estoque</h1>
+            <a href="/App/Estoque/Novo" class="btn-primary">Novo Produto</a>
         </div>
         <div id="estoquelist"></div>
     </div>

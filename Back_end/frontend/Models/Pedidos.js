@@ -38,16 +38,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         const prod = produtosMap[nomeProd];
 
         if (!prod || !qtdBaixa || qtdBaixa <= 0) {
-            alert("Selecione um produto válido e uma quantidade.");
+            infoEstoque.style.color = "#ef4444";
+            infoEstoque.style.fontWeight = "600";
+            infoEstoque.innerText = "⚠ Selecione um produto e quantidade válidos.";
             return;
         }
 
         if (qtdBaixa > prod.quantidade) {
-            alert("Quantidade maior que o estoque disponível!");
+            infoEstoque.style.color = "#ef4444";
+            infoEstoque.style.fontWeight = "600";
+            infoEstoque.innerText = "❌ Quantidade maior que o estoque disponível.";
             return;
         }
 
         try {
+            botBaixa.innerText = "Processando...";
+            botBaixa.disabled = true;
+            botBaixa.style.backgroundColor = "#475569"; // Slate escuro para melhor contraste com texto branco
+
             const response = await fetch('/api/produtos/baixa', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -55,15 +63,23 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (response.ok) {
-                alert("Baixa realizada com sucesso!");
-                window.location.href = '/App/Estoque';
+                botBaixa.style.backgroundColor = "#10b981";
+                botBaixa.innerText = "Sucesso!";
+                setTimeout(() => {
+                    window.location.href = '/App/Estoque';
+                }, 1000);
             } else {
+                botBaixa.disabled = false;
+                botBaixa.style.backgroundColor = "#4f46e5";
+                botBaixa.innerText = "Tentar Novamente";
                 const resData = await response.json();
-                alert("Erro: " + resData.erro);
+                infoEstoque.style.color = "#ef4444";
+                infoEstoque.innerText = `Erro: ${resData.erro}`;
             }
         } catch (error) {
-            console.error("Erro na requisição:", error);
-            alert("Erro ao conectar com o servidor.");
+            botBaixa.disabled = false;
+            botBaixa.style.backgroundColor = "#4f46e5";
+            botBaixa.innerText = "Erro na Conexão";
         }
     });
 });

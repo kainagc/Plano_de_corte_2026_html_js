@@ -6,43 +6,146 @@
     <title>Editar Produto</title>
     <link rel="stylesheet" href="/Styles/Novo_Produto.css">
     <link rel="stylesheet" href="/Styles/Menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        .btn-excluir {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #c0392b;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
+        body {
+            background: radial-gradient(circle at top right, #e0e7ff 0%, #f8fafc 40%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .btn-excluir:hover { background-color: #a93226; }
+        #novoprodprinc {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 420px;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            position: relative;
+            box-sizing: border-box;
+            align-items: center;
+        }
+        #titulo_pag {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #titulo_pag h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #1e293b;
+            margin: 0;
+            letter-spacing: -0.025em;
+        }
+        #botprod {
+            width: 100%;
+            height: 48px;
+            background-color: #4f46e5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+        }
+        #botprod h1 {
+            font-size: 15px;
+            color: #ffffff !important;
+            margin: 0;
+            font-weight: 600;
+        }
+        #botprod:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+        .btn-excluir {
+            width: 100%;
+            height: 48px;
+            border: 1.5px solid #fee2e2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            margin-top: 12px;
+            color: #ef4444;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-excluir:hover {
+            background-color: #fef2f2;
+            border-color: #fca5a5;
+            color: #dc2626;
+        }
+        .label-campo {
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+            align-self: flex-start;
+        }
+        .campnovoprod {
+            width: 100%;
+            height: 46px;
+            border: 1.5px solid #f1f5f9;
+            border-radius: 12px;
+            background-color: #f8fafc;
+            padding: 0 16px;
+            font-size: 15px;
+            color: #0f172a;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            outline: none;
+            margin-bottom: 4px;
+        }
+        .campnovoprod:focus {
+            border-color: #6366f1;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
     </style>
 </head>
 <body>
     <div id="menu-superior">
-        <a href="/App" class="item-menu">Home</a>
+        <a href="/App" class="item-menu">Dashboard</a>
         <a href="/App/Clientes" class="item-menu">Clientes</a>
         <a href="/App/Projetos" class="item-menu">Projetos</a>
         <a href="/App/Estoque" class="item-menu">Estoque</a>
-        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+        <a href="/App/Pedido" class="item-menu">Vendas</a>
     </div>
     <div id="novoprodprinc">
-        <div id="titulo_pag">
-            <h1>Editar Produto</h1>
-        </div>
-        <div><h1>Nome</h1></div>
-        <div><input type="text" class="campnovoprod" id="nomeInput"></div>
-        <div><h1>Descrição</h1></div>
-        <div><input type="text" class="campnovoprod" id="descInput"></div>
-        <div><h1>Quantidade</h1></div>
-        <div><input type="number" class="campnovoprod" id="quantInput"></div>
+        <div id="titulo_pag"><h1>Editar Produto</h1></div>
+        
+
+        <label class="label-campo">Nome</label>
+        <input type="text" class="campnovoprod" id="nomeInput">
+        
+        <label class="label-campo">Descrição</label>
+        <input type="text" class="campnovoprod" id="descInput">
+        
+        <label class="label-campo">Quantidade</label>
+        <input type="number" class="campnovoprod" id="quantInput">
         
         <div id='botprod'>
             <h1>Salvar Alterações</h1>
         </div>
-        <button class="btn-excluir" id="btnExcluir">Excluir Produto</button>
+        <div class="btn-excluir" id="btnExcluir">
+            Excluir Produto
+        </div>
     </div>
 
     <script>

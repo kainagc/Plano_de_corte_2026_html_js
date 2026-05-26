@@ -1,107 +1,119 @@
 body{
-    background-color: #4E4E4E;
+    background: radial-gradient(circle at top right, #e0e7ff 0%, #f8fafc 40%, #ffffff 100%);
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    box-sizing: border-box;
 }
 
 #princcadas{
-    margin-top: 140px;
   display: flex;
-  width: 1450px;
-  height: 650px;
-  background-color: #666666;
   flex-direction: column;
-  border-radius: 20px;
-  border: solid 3px;
-  border-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  max-width: 420px;
+  background-color: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+  padding: 30px 40px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  position: relative;
+  box-sizing: border-box;
 }
 
 #camposcadas{
-    width: 300px;
-    height: 650px;
-    
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    gap: 10px;
 }
 
-#nomecasdascamp{
-    width: 250px;
-    height: 50px;
-    border: solid 3px;
-    border-radius: 20px;
-    border-color: #4E4E4E;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
+#nomecasdascamp, 
+#emailcadascamp, 
+#senhacadascamp, 
+#comfsenhacadascamp {
+    width: 100%;
+    height: 46px;
+    border: 1.5px solid #f1f5f9;
+    border-radius: 12px;
+    background-color: #f8fafc;
+    padding: 0 16px;
+    font-size: 15px;
+    color: #0f172a;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    outline: none;
 }
 
-#emailcadascamp{
-    width: 250px;
-    height: 50px;
-    border: solid 3px;
-    border-radius: 20px;
-    border-color: #4E4E4E;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-}
-
-#senhacadascamp{
-    width: 250px;
-    height: 50px;
-    border: solid 3px;
-    border-radius: 20px;
-    border-color: #4E4E4E;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-}
-
-#comfsenhacadascamp{
-    width: 250px;
-    height: 50px;
-    border: solid 3px;
-    border-radius: 20px;
-    border-color: #4E4E4E;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
+#nomecasdascamp:focus, 
+#emailcadascamp:focus, 
+#senhacadascamp:focus, 
+#comfsenhacadascamp:focus {
+    border-color: #6366f1;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
 #botcadast{
-    width: 185px;
-    height: 50px;
-    border: solid 3px;
-    border-radius: 20px;
-    border-color: #4E4E4E;
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    margin-top: 20px;
-    color: #4E4E4E;
+    background-color: #4f46e5;
+    margin-top: 5px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
 }
 
-#nomecadas,#emailcadas,#senhacadas,#comfsenhacadas{
-    color: white;
+#botcadast:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.4);
+}
+
+#nomecadas, #emailcadas, #senhacadas, #comfsenhacadas {
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
 }
 
 #voltarimg{
-    width: 50px;
-    height: 50px;
-    left: 200px;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+#voltarimg:hover {
+    opacity: 1;
+}
+
+/* Estilização para o título interno do card */
+#princcadas h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.025em;
+    text-align: center;
 }

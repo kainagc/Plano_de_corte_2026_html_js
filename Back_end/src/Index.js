@@ -72,7 +72,7 @@ app.get('/api/clientes', async (req, res) => {
 
 app.post('/api/clientes', async (req, res) => {
   try {
-    const { nome, cpf, endereco, telefone, data } = req.body;
+    const { nome, cpf, endereco, telefone } = req.body;
     if (!nome) {
       return res.status(400).json({ erro: 'Nome é obrigatório.' });
     }
@@ -83,7 +83,7 @@ app.post('/api/clientes', async (req, res) => {
       return res.status(400).json({ erro: 'CPF já cadastrado' });
     }
 
-    const cliente = await Cliente.create({ nome, cpf, endereco, telefone, data });
+    const cliente = await Cliente.create({ nome, cpf, endereco, telefone, data: new Date() });
     res.status(201).json(cliente);
   } catch (erro) {
     console.error(erro);
@@ -127,11 +127,11 @@ app.get('/api/clientes/:id', async (req, res) => {
 
 app.put('/api/clientes/:id', async (req, res) => {
   try {
-    const { nome, cpf, endereco, telefone, data } = req.body;
+    const { nome, cpf, endereco, telefone } = req.body;
     const cliente = await Cliente.findByPk(req.params.id);
     if (!cliente) return res.status(404).json({ erro: "Cliente não encontrado" });
 
-    await cliente.update({ nome, cpf, endereco, telefone, data });
+    await cliente.update({ nome, cpf, endereco, telefone });
     res.json({ mensagem: "Cliente atualizado com sucesso!" });
   } catch (erro) {
     res.status(500).json({ erro: "Erro ao atualizar cliente" });

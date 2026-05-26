@@ -3,35 +3,39 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 90px;
-    background-color: #4E4E4E;
+    height: 64px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    border-bottom: 3px solid white;
+    gap: 10px;
+    border-bottom: 1px solid #e2e8f0;
     z-index: 1000;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
 }
 
 .item-menu {
-    font-family: Arial, sans-serif; /* Garante a mesma fonte em todas as páginas */
-    color: white;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #475569;
     text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 0 25px;
-    height: 50px;
-    width: 160px; /* Trocamos min-width por width fixo para total simetria */
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 16px;
+    height: 38px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid white;
-    border-radius: 15px;
-    background-color: #666666;
-    transition: 0.3s;
+    border-radius: 8px;
+    background-color: transparent;
+    transition: all 0.2s ease;
     box-sizing: border-box;
-    white-space: nowrap; /* Impede que o texto quebre linha */
+    white-space: nowrap;
     line-height: normal;
 }
 
-.item-menu:hover { background-color: #4E4E4E; }
+.item-menu:hover { 
+    background-color: #f1f5f9;
+    color: #6366f1;
+}
