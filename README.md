@@ -44,3 +44,5 @@ Ele possibilita o cadastro de peças, chapas e a geração de planos de corte au
 Que nem expliquei em sala, a ideia era fazer um plano de corte, mudei um pouco a ideia, vai ser ERP 
 
 https://docs.google.com/document/d/1w0n5aMYrzFxjx-7WGiwrhXAixaPlj748ACu_uD8jkuY/edit?usp=sharing
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kainagc_Plano_de_corte_2026_html_js&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kainagc_Plano_de_corte_2026_html_js)
