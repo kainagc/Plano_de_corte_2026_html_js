@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Styles/Clientes.css">
+    <link rel="stylesheet" href="/Styles/Menu.css">
+    <style>
+        /* Estilo para os cards de clientes igual ao estoque */
+        .cliente-card {
+            width: 90%;
+            background-color: #4E4E4E;
+            border: 2px solid white;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+        .cliente-card:hover { background-color: #5d5d5d; }
+        .cliente-info h2 { margin: 0; font-size: 22px; text-transform: uppercase; }
+        .cliente-info p { margin: 5px 0 0; font-size: 16px; color: #ddd; }
+        .cliente-contato {
+            background-color: white;
+            color: #4E4E4E;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-superior">
+        <a href="/App" class="item-menu">Home</a>
+        <a href="/App/Clientes" class="item-menu">Clientes</a>
+        <a href="/App/Projetos" class="item-menu">Projetos</a>
+        <a href="/App/Estoque" class="item-menu">Estoque</a>
+        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+    </div>
+    <div id="cliprinc">
+        <div onclick="window.location.href='/App/Clientes/Novo'" id="novocli">
+            <h1>Novo Cliente</h1>
+        </div>
+        <div id="clientesList"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const listContainer = document.getElementById('clientesList');
+
+            async function carregarClientes() {
+                try {
+                    const response = await fetch('/api/clientes');
+                    const clientes = await response.json();
+
+                    if (clientes.length === 0) {
+                        listContainer.innerHTML = '<h1 style="color: white; opacity: 0.5; margin-top: 50px;">Nenhum cliente cadastrado</h1>';
+                        return;
+                    }
+
+                    listContainer.innerHTML = clientes.map(cli => `
+                        <div class="cliente-card" onclick="window.location.href='/App/Clientes/Editar?id=${cli.id}'">
+                            <div class="cliente-info">
+                                <h2>${cli.nome}</h2>
+                                <p>Endereço: ${cli.endereco || '-'}</p>
+                            </div>
+                            <div class="cliente-contato">
+                                ${cli.telefone || 'Sem telefone'}
+                            </div>
+                        </div>
+                    `).join('');
+                } catch (error) { console.error('Erro:', error); }
+            }
+            carregarClientes();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Projeto</title>
+    <!-- O caminho correto para o CSS quando servido pelo Express -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-projeto">
+            <h2>Editar Projeto</h2>
+        </div>
+
+        <div class="form-group">
+            <label>Nome do Projeto:</label>
+            <input type="text" id="nomeInput" class="input-field">
+            
+            <label>Etapa:</label>
+            <select id="etapaInput" class="input-field">
+                <option value="Planejamento">Planejamento</option>
+                <option value="Execução">Execução</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+        </div>
+
+        <div class="actions">
+            <button id="btnSalvar">Salvar Alterações</button>
+            <button id="btnExcluir" style="background-color: red; color: white;">Excluir Projeto</button>
+        </div>
+        <a href="/App/Projetos">Voltar</a>
+    </div>
+    <script src="/Models/Editar_Projeto.js"></script>
+</body>
+</html>

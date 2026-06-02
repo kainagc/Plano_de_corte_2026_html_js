@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos - Baixa de Estoque</title>
+    <link rel="stylesheet" href="/Styles/Pedidos.css">
+    <link rel="stylesheet" href="/Styles/Menu.css">
+    <script src="/Models/Pedidos.js"></script>
+</head>
+<body>
+    <div id="menu-superior">
+        <a href="/App" class="item-menu">Home</a>
+        <a href="/App/Clientes" class="item-menu">Clientes</a>
+        <a href="/App/Projetos" class="item-menu">Projetos</a>
+        <a href="/App/Estoque" class="item-menu">Estoque</a>
+        <a href="/App/Pedido" class="item-menu">Pedidos</a>
+    </div>
+    <div id="pedidosprinc">
+        <div id="titulo_pag">
+            <h1>Baixa de Estoque</h1>
+        </div>
+        
+        <div>
+            <h1>Selecionar Produto</h1>
+        </div>
+        <div>
+            <input type="text" class="camppedido" id="produtoInput" list="produtosDatalist" placeholder="Busque o produto...">
+            <datalist id="produtosDatalist"></datalist>
+            <input type="hidden" id="produtoIdInput">
+        </div>
+
+        <div>
+            <h1>Quantidade para Retirar</h1>
+        </div>
+        <div>
+            <input type="number" class="camppedido" id="quantBaixaInput" min="1">
+        </div>
+
+        <div id="infoEstoque" style="margin-top: 10px; font-size: 18px; color: #ccc;">
+            <!-- Mostra o estoque atual via JS -->
+        </div>
+
+        <div id='botbaixa'>
+            <h1>Dar Baixa</h1>
+        </div>
+    </div>
+</body>
+</html>

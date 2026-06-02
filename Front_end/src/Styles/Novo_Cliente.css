@@ -1,0 +1,84 @@
+body{
+    background-color: #4E4E4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#novocliprinc{
+    margin-top: 140px;
+    display: flex;
+    width: 1450px;
+    width: 95%;
+    max-width: 1450px;
+    min-height: 650px;
+    height: auto;
+    background-color: #666666;
+    padding: 140px 60px 40px;
+    
+    border-radius: 20px;
+    border: solid 3px;
+    border-color: white;
+    color: white;
+    align-items: center;
+    justify-content: flex-start;
+
+    position: relative;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+#novocli{
+    width: 400px;
+    width: 90%;
+    max-width: 400px;
+    height: 80px;
+    border: solid 3px;
+    border-color: white;
+    border-radius: 20px;
+    background-color: #4E4E4E;
+
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+}
+
+
+.campnovocli{
+    width: 250px;
+    height: 50px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    
+}
+
+
+#botcli{
+    width: 185px;
+    height: 50px;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: #4E4E4E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-top: 20px;
+    color: #4E4E4E;
+}
+
+@media (max-width: 768px) {
+    #novocliprinc {
+        margin-top: 20px;
+        padding: 120px 20px 40px;
+    }
+    #novocli { height: 60px; }
+    .campnovocli { width: 100%; max-width: 250px; }
+}

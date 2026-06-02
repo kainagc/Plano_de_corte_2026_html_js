@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    #container_name: plano_corte_app
+    #build: ./Back_end
+    image: kainagc/plano_de_corte_2026_html_js-app:1.0.16
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - ./Back_end/frontend:/app/frontend
+    environment:
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_NAME=plano_de_corte_2026
+    networks:
+      - plano_corte_network
+
+  db:
+    image: postgres:15
+    container_name: plano_corte_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: plano_de_corte_2026
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - plano_corte_network
+
+volumes:
+  postgres_data:
+
+networks:
+  plano_corte_network:
